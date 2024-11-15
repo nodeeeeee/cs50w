@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+{% block body %}
+  <div class="smaller">
+    <form action="{% url 'create' %}" method="POST">
+      {% csrf_token %}
+      {{ create_form }}
+      {#    <label for="title"><b>TITLE</b></label>#}
+      {#    <input type="text" name="title" class="form-control" id="title" placeholder="TITLE">#}
+      {#    <label for="content"><b>CONTENT</b></label>#}
+      {#    <textarea name="title" class="form-control" rows="20" id="content" placeholder="type content here..."></textarea>#}
+      <div style="display: flex; justify-content: flex-end; padding-top: 20px;">
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+  {% if error == True %}
+    <div class="alert alert-warning" role="alert">
+      This entry already exists.
+    </div>
+  {% endif %}
+{% endblock %}
